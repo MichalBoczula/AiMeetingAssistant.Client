@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+
+import { SignalRAiAnalysisService } from './core/realtime/signalr-ai-analysis.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class App {
-  protected readonly title = signal('ai-meeting-assistant-web-client');
+  private readonly signalRAiAnalysisService = inject(SignalRAiAnalysisService);
+
+  protected readonly analysisText = this.signalRAiAnalysisService.analysisText;
 }
