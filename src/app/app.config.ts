@@ -8,7 +8,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: SIGNALR_NEGOTIATE_URL,
       useValue:
-        'https://func-ai-meeting-assistant-dev-mb-btdeargfegebefhb.polandcentral-01.azurewebsites.net/api/negotiate'
+        'https://func-ai-meeting-assistant-dev-mb-btdeargfegebefhb.polandcentral-01.azurewebsites.net/api'
     }
   ]
 };
