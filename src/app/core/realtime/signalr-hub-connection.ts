@@ -17,7 +17,7 @@ export const SIGNALR_HUB_CONNECTION = new InjectionToken<SignalRHubConnection>(
   {
     factory: () =>
       new HubConnectionBuilder()
-        .withUrl(inject(SIGNALR_NEGOTIATE_URL))
+        .withUrl(inject(SIGNALR_NEGOTIATE_URL), { withCredentials: false })
         .withAutomaticReconnect()
         .build()
   }
