@@ -2,9 +2,11 @@ import { inject, InjectionToken } from '@angular/core';
 import { HubConnectionBuilder } from '@microsoft/signalr';
 
 import { AiAnalysisCompleted } from './ai-analysis-completed';
+import { AiAnalysisFailed } from './ai-analysis-failed';
 
 export interface SignalRHubConnection {
-  on(eventName: string, callback: (notification: AiAnalysisCompleted) => void): void;
+  on(eventName: 'AiAnalysisCompleted', callback: (notification: AiAnalysisCompleted) => void): void;
+  on(eventName: 'AiAnalysisFailed', callback: (notification: AiAnalysisFailed) => void): void;
   start(): Promise<void>;
 }
 
