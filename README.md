@@ -2,6 +2,27 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
 
+## Keeping the display awake
+
+The client automatically requests a screen wake lock while its page is visible,
+including while waiting for the next AI response. It releases the lock when the
+page is hidden or the app is destroyed, and requests a new lock when the page
+becomes visible again. Returning from the browser's back/forward cache is handled
+through the page lifecycle events as well.
+
+Screen Wake Lock requires HTTPS (or a trustworthy local development origin) and
+browser support. The device may reject or release it because of battery or power
+saving settings. In that case a small notice provides a retry button; unsupported
+browsers show a device-settings hint. AI notifications continue to work even if
+the lock is unavailable. The client cannot keep a background tab awake or prevent
+the user from locking the phone manually.
+
+After deployment, open the client on the phone, keep the page visible longer than
+the configured screen timeout, and verify that the display stays on. Switch away
+and return to check reacquisition. Also test the notice with power saving enabled
+if the device denies the request. Physical-device behavior must be checked separately
+from the mocked unit tests.
+
 ## Development server
 
 To start a local development server, run:

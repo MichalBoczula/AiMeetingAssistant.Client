@@ -1,3 +1,13 @@
 <main>
   <p class="analysis-text" aria-live="polite">{{ analysisText() }}</p>
 </main>
+@if (screenWakeLock.state() === 'unavailable') {
+  <aside class="wake-lock-notice" aria-live="polite">
+    <span>Screen may turn off.</span>
+    <button type="button" (click)="screenWakeLock.start()">Keep screen awake</button>
+  </aside>
+} @else if (screenWakeLock.state() === 'unsupported') {
+  <aside class="wake-lock-notice" aria-live="polite">
+    Keep your screen on using your device settings. Screen wake lock is unavailable.
+  </aside>
+}
